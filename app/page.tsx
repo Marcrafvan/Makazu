@@ -111,7 +111,7 @@ export default function Home() {
             
             {/* Asset Card */}
             <div className="bg-zinc-900 p-6 rounded-xl hover:border-red-500 border border-zinc-800 transition-all flex flex-col">
-              <h3 className="text-2xl font-bold text-white mb-2">SeaTus Custom Prop</h3>
+              <h3 className="text-2xl font-bold text-white mb-2">SeaTus - Reef Manta Ray</h3>
               <p className="text-red-400 mb-4 font-mono text-xs">Autodesk Maya • Unity</p>
               
               {/* Sketchfab Embed Container */}
@@ -119,13 +119,13 @@ export default function Home() {
                  <iframe 
                   title="Sketchfab Model" 
                   className="w-full h-full pointer-events-auto"
-                  src="https://sketchfab.com/models/YOUR_SKETCHFAB_ID_HERE/embed?autostart=0&ui_controls=1&ui_infos=0&ui_watermark=0&ui_theme=dark" 
+                  src="https://sketchfab.com/models/267fb47f6f1f41a4b0dd3916607c0436/embed" 
                   frameBorder="0" 
                   allow="autoplay; fullscreen; vr" 
                   allowFullScreen>
                 </iframe>
               </div>
-              <p className="text-sm text-slate-400">Interactive 3D preview of a custom environmental asset modeled specifically for the capstone project.</p>
+              <p className="text-sm text-slate-400">Interactive 3D preview of an animal asset modeled specifically for the SeaTus VR capstone project.</p>
             </div>
 
             {/* Asset Card Placeholder */}
@@ -153,7 +153,7 @@ export default function Home() {
             <div className="bg-zinc-900 p-6 md:p-8 rounded-xl hover:border-red-500 border border-zinc-800 transition-all group">
               {/* group-hover changes the title text color when the parent card is hovered */}
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 group-hover:text-red-500 transition-colors">SocialDesk</h3>
-              <p className="text-red-400 mb-4 md:mb-6 font-mono text-xs md:text-sm">HTML • CSS • PHP</p>
+              <p className="text-red-400 mb-4 md:mb-6 font-mono text-xs md:text-sm">TypeScript • PLpgSQL • Other</p>
               <p className="text-sm md:text-base text-slate-400 leading-relaxed">A comprehensive social media management platform focusing on custom database architectures, seamless front-end integration, and secure back-end operations.</p>
             </div>
             <div className="bg-zinc-900 p-6 md:p-8 rounded-xl hover:border-red-500 border border-zinc-800 transition-all group">

@@ -104,7 +104,7 @@ export default function Home() {
       <section className="min-w-full h-full overflow-y-auto flex flex-col justify-center items-center snap-center p-6 md:p-10 border-r border-red-900/30 relative">
         <div className="absolute top-4 left-4 md:top-10 md:left-10 text-[6rem] md:text-[10rem] font-black text-zinc-900/50 z-0 select-none pointer-events-none">02</div>
         <div className="z-10 w-full max-w-6xl py-20 md:py-0 mt-16 md:mt-0">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 md:mb-12 border-b-2 border-red-600 inline-block pb-2">3D Game Assets</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 md:mb-12 border-b-2 border-red-600 inline-block pb-2">Game Assets</h2>
           
           {/* Grid Layout: 1 column on mobile, 2 columns on medium screens and up */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">

@@ -38,9 +38,9 @@ export default function Home() {
 
   return (
     <main 
-      ref={scrollContainerRef} 
-      className="flex h-[100dvh] w-screen overflow-x-auto snap-x snap-mandatory bg-zinc-950 text-slate-200 font-sans hide-scrollbar"
-    >
+  ref={scrollContainerRef} 
+  className="flex h-[100dvh] w-screen overflow-x-auto snap-x snap-mandatory bg-transparent text-slate-200 font-sans hide-scrollbar"
+>
       
       {/* 1. Landing & Contact Section */}
       <section className="min-w-full h-full overflow-y-auto flex flex-col justify-center items-center snap-center p-6 md:p-10 border-r border-red-900/30">
@@ -57,6 +57,11 @@ export default function Home() {
             <h3 className="text-xl md:text-2xl font-bold mb-6 text-red-500">Contact Information</h3>
             <p className="text-base md:text-lg mb-3 hover:text-white transition-colors break-words">
               <a href="mailto:marcussteven.basanta.10202003@gmail.com">marcussteven.basanta.10202003@gmail.com</a>
+            </p>
+            <p className="text-base md:text-lg mb-3 hover:text-white transition-colors break-words">
+              <a href="https://www.linkedin.com/in/marcrafvan/" target="_blank" rel="noopener noreferrer">
+                https://www.linkedin.com/in/marcrafvan/
+              </a>
             </p>
             <p className="text-base md:text-lg hover:text-white transition-colors">
               <a href="tel:+639982515178">+63 998 251 5178</a>

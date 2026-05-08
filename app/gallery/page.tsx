@@ -117,7 +117,7 @@ export default function Gallery() {
   const allGalleryItems = [...youtubeEmbeds, ...localMedia];
 
   return (
-    <main className="min-h-screen bg-zinc-950 text-slate-200 font-sans p-6 md:p-12">
+    <main className="min-h-screen bg-transparent text-slate-200 font-sans p-6 md:p-12">
       
       {/* Header & Navigation */}
       <div className="max-w-7xl mx-auto mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-red-900/30 pb-6">

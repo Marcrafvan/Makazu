@@ -2,6 +2,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import ParticleBackground from '../components/ParticleBackground'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,7 +18,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-zinc-950 text-slate-200 antialiased`}>{children}</body>
+      <body className={`${inter.className} bg-zinc-950 text-slate-200 antialiased relative`}>
+        
+        {/* Render the interactive sparks globally behind everything */}
+        <ParticleBackground /> 
+        
+        {/* The main content (your page.tsx or gallery/page.tsx) */}
+        <div className="relative z-10">
+          {children}
+        </div>
+        
+      </body>
     </html>
   )
 }

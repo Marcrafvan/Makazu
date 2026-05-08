@@ -2,9 +2,9 @@
 import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
+import GalleryGrid from './GalleryGrid';
 
 // 1. Put your YouTube links here. 
-// You only need to manually update this array when adding new YouTube videos.
 const youtubeEmbeds = [
   {
     id: 'yt-1',
@@ -13,7 +13,6 @@ const youtubeEmbeds = [
     title: 'SeaTus VR Gameplay',
     description: 'In-game footage of the capstone project.'
   },
-
   {
     id: 'yt-2',
     type: 'youtube',
@@ -21,7 +20,6 @@ const youtubeEmbeds = [
     title: 'Visual Scripting',
     description: 'Test-run for the fps activity using visual scripting'
   },
-
   {
     id: 'yt-3',
     type: 'youtube',
@@ -29,7 +27,6 @@ const youtubeEmbeds = [
     title: '2D side-scroller game',
     description: 'A game I developed for our midterm activity.'
   },
-
   {
     id: 'yt-4',
     type: 'youtube',
@@ -37,7 +34,6 @@ const youtubeEmbeds = [
     title: 'Character Animation with the help of KOF Sprites',
     description: 'Character Animation'
   },
-
   {
     id: 'yt-5',
     type: 'youtube',
@@ -45,7 +41,6 @@ const youtubeEmbeds = [
     title: 'Jungle Themed Arkanoid Game',
     description: 'Summative 2 Technical Activity Themed Around a Jungle-based Arkanoid Game'
   },
-
   {
     id: 'yt-6',
     type: 'youtube',
@@ -53,7 +48,6 @@ const youtubeEmbeds = [
     title: 'Maze-type Game with AI Pathing',
     description: 'This is a maze-type game where the player must navigate through a maze while avoiding an enemy that uses AI pathfinding to chase them.'
   },
-
   {
     id: 'yt-7',
     type: 'youtube',
@@ -61,7 +55,6 @@ const youtubeEmbeds = [
     title: 'Timeline Activity - Pokemon Themed Slideshow Program',
     description: 'This demonstrates my personal journey in the game POKEMON ORAS'
   },
-
   {
     id: 'yt-8',
     type: 'youtube',
@@ -69,7 +62,6 @@ const youtubeEmbeds = [
     title: 'Vehicle Pathing Activity - School Bus',
     description: 'This was done by using CV Curve tool and having a game object follow the curve.'
   },
-
   {
     id: 'yt-9',
     type: 'youtube',
@@ -77,7 +69,6 @@ const youtubeEmbeds = [
     title: 'Shooting Test',
     description: 'This is a gameplay similar to a shooting gallery where the player must shoot targets that appear on the screen.'
   },
-
   {
     id: 'yt-10',
     type: 'youtube',
@@ -85,7 +76,6 @@ const youtubeEmbeds = [
     title: 'Door Test',
     description: 'This demonstrates a door that opens when the player approaches it and closes when they move away. There are locked and unlocked doors.'
   }
-
 ];
 
 // 2. This helper function automatically reads the physical files in your folder
@@ -93,19 +83,15 @@ function getLocalMedia() {
   const galleryDir = path.join(process.cwd(), 'public', 'gallery');
   
   try {
-    // Read all files in the directory
     const files = fs.readdirSync(galleryDir);
     
-    // Convert the file names into gallery items
     return files.map((filename, index) => {
       const ext = path.extname(filename).toLowerCase();
       const isImage = ['.jpg', '.jpeg', '.png', '.gif', '.webp'].includes(ext);
       const isVideo = ['.mp4', '.webm'].includes(ext);
 
-      if (!isImage && !isVideo) return null; // Skip non-media files
+      if (!isImage && !isVideo) return null; 
 
-      // Automatically format the title from the filename 
-      // e.g., "reef-manta-ray.jpg" becomes "Reef Manta Ray"
       const formattedTitle = filename
         .replace(ext, '')
         .replace(/[-_]/g, ' ')
@@ -116,9 +102,9 @@ function getLocalMedia() {
         type: isImage ? 'image' : 'video',
         src: `/gallery/${filename}`,
         title: formattedTitle,
-        description: `Past ${isImage ? 'Work' : 'Video Recording'}` // Default description
+        description: `Past ${isImage ? 'Work' : 'Video Recording'}` 
       };
-    }).filter(Boolean); // Remove any null values from skipped files
+    }).filter(Boolean); 
     
   } catch (error) {
     console.warn("Gallery folder not found or empty. Please create public/gallery/");
@@ -127,7 +113,6 @@ function getLocalMedia() {
 }
 
 export default function Gallery() {
-  // Combine the automatic local files with the manual YouTube embeds
   const localMedia = getLocalMedia() as any[];
   const allGalleryItems = [...youtubeEmbeds, ...localMedia];
 
@@ -154,56 +139,8 @@ export default function Gallery() {
         </Link>
       </div>
 
-      {/* Gallery Grid */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {allGalleryItems.map((item) => (
-          <div key={item.id} className="bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 hover:border-red-500 transition-colors flex flex-col group">
-            
-            {/* Media Container */}
-            <div className="w-full aspect-video bg-black relative overflow-hidden">
-              
-              {/* Render Image */}
-              {item.type === 'image' && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img 
-                  src={item.src} 
-                  alt={item.title} 
-                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
-                />
-              )}
-
-              {/* Render Local Video */}
-              {item.type === 'video' && (
-                <video 
-                  src={item.src} 
-                  controls 
-                  className="w-full h-full object-cover"
-                  controlsList="nodownload"
-                />
-              )}
-
-              {/* Render YouTube Embed */}
-              {item.type === 'youtube' && (
-                <iframe 
-                  src={item.src} 
-                  title={item.title}
-                  className="w-full h-full"
-                  frameBorder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowFullScreen
-                />
-              )}
-            </div>
-
-            {/* Item Details */}
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-red-500 transition-colors">{item.title}</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">{item.description}</p>
-            </div>
-            
-          </div>
-        ))}
-      </div>
+      {/* Render the Client Component Grid */}
+      <GalleryGrid items={allGalleryItems} />
 
     </main>
   );
